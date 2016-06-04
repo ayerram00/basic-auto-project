@@ -1,14 +1,3 @@
-/**
- *   File Name: JUnitDataDrivenaTest.java<br>
- *
- *   LastName, FirstName<br>
- *   Java Boot Camp Exercise<br>
- *   Instructor: Jean-francois Nepton<br>
- *   Created: Jun 2, 2016
- *
- */
-
-package com.sqa.jf;
 
 import org.junit.*;
 import org.junit.runner.*;
