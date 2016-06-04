@@ -1,3 +1,4 @@
+package com.sqa.ay;
 
 import org.junit.*;
 import org.junit.runner.*;
