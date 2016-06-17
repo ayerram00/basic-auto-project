@@ -1,0 +1,13 @@
+Number,IsPrime
+Test Data 1,457,TRUE
+Test Data 2,661,TRUE
+Test Data 3,983,TRUE
+Test Data 4,363,FALSE
+Test Data 5,468,FALSE
+Test Data 6,251,TRUE
+Test Data 7,137,TRUE
+Test Data 8,120,FALSE
+Test Data 9,563,TRUE
+Test Data 10,693,FALSE
+Test Data 11,337,TRUE
+Test Data 12,123,FALSE
