@@ -70,6 +70,7 @@ buildNumber.properties
 ### Java ###
 *.class
 *.output
+test-output*
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
