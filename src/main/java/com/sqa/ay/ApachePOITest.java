@@ -3,30 +3,41 @@ package com.sqa.ay;
 import java.io.*;
 import java.util.*;
 
-import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.*;
+import org.testng.*;
+import org.testng.annotations.*;
 import org.testng.annotations.Test;
 
 public class ApachePOITest {
-	@Test
+	@DataProvider
+	public Object[][] getData() {
+		Object[][] data = DataHelper.getExcelFileData("src/main/resources/", "calc-area-dp.xlsx", true);
+		DisplayHelper.multArray(data);
+		return data;
+
+	}
+
+	@Test(enabled = false)
 	public void test() {
 		try {
 
 			// Get File based on class loader (Setup Needed)
-			// ClassLoader classLoader = ApachePOITest.class.getClassLoader();
+			ClassLoader classLoader = ApachePOITest.class.getClassLoader();
 			//
 			// Get InputStream via Class Loader (Setup Needed)
 			// InputStream file =
 			// classLoader.getResourceAsStream("poi-example.xls");
 
 			// Get the file using basic File and relative path to directory
-			InputStream file = new FileInputStream(new File("poi-example.xls"));
+			InputStream OldExcelFormatFile = classLoader.getResourceAsStream("poi-example.xls");
+			InputStream NewExcelFormatFile = classLoader.getResourceAsStream("poi-example.xlsx");
 
 			// Get the workbook instance for XLS file
-			HSSFWorkbook workbook = new HSSFWorkbook(file);
+			XSSFWorkbook workbook = new XSSFWorkbook(NewExcelFormatFile);
 
 			// Get first sheet from the workbook
-			HSSFSheet sheet = workbook.getSheetAt(0);
+			XSSFSheet sheet = workbook.getSheetAt(0);
 
 			// Iterate through each rows from first sheet
 			Iterator<Row> rowIterator = sheet.iterator();
@@ -56,7 +67,7 @@ public class ApachePOITest {
 				System.out.println("");
 			}
 			// Close File Read Stream
-			file.close();
+			NewExcelFormatFile.close();
 			// Create an OutputStream to write
 			FileOutputStream out = new FileOutputStream(new File("src/main/resources/excel-output.xls"));
 			// Write the workbook
@@ -70,4 +81,61 @@ public class ApachePOITest {
 			e.printStackTrace();
 		}
 	}
+
+	@SuppressWarnings("javadoc")
+	@Test(dataProvider = "getData")
+	public void testCalcAreaRectangle(String shape, int expectedResult, int parameter1, int parameter2)
+			throws IncorrectShapeParameterException, UnSupportedShapeException {
+		// int parameter = 4;
+		// String shape = "RECTANGLE";
+		int actualResult = 0;
+		if (shape.equalsIgnoreCase("Circle")) {
+			actualResult = calcArea(Shape.CIRCLE, parameter1);
+		} else if (shape.equalsIgnoreCase("Square")) {
+			actualResult = calcArea(Shape.SQUARE, parameter1);
+		} else if (shape.equalsIgnoreCase("Rectangle")) {
+			actualResult = calcArea(Shape.RECTANGLE, parameter1, parameter2);
+		} else {
+			throw new UnSupportedShapeException();
+		}
+		Assert.assertEquals(actualResult, expectedResult);
+		;
+	}
+
+	@Test(enabled = false)
+	public void testCalcAreaSquare() throws IncorrectShapeParameterException {
+		int parameter = 4;
+		String shape = "Square";
+		int actualResult = calcArea(Shape.SQUARE, parameter);
+		Assert.assertEquals(actualResult, 16);
+	}
+
+	private int calcArea(Shape shape, int... parameters) throws IncorrectShapeParameterException {
+		switch (shape) {
+		case SQUARE:
+			if (parameters.length == 1) {
+				return parameters[0] * parameters[0];
+			} else {
+				throw new IncorrectShapeParameterException();
+			}
+
+		case RECTANGLE:
+			if (parameters.length == 2) {
+				return parameters[0] * parameters[1];
+			} else {
+				throw new IncorrectShapeParameterException();
+			}
+
+		case CIRCLE:
+			if (parameters.length == 2) {
+				return (int) 3.14 * parameters[0] * parameters[0];
+			} else {
+				throw new IncorrectShapeParameterException();
+			}
+		default:
+			System.out.println("Shape is not supported");
+		}
+		return 0;
+	}
+
 }
