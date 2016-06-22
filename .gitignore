@@ -69,7 +69,10 @@ buildNumber.properties
 
 ### Java ###
 *.class
+<<<<<<< HEAD
 *.output
+=======
+>>>>>>> auto-project
 test-output*
 
 # Mobile Tools for Java (J2ME)
