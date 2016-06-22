@@ -1,30 +1,9 @@
-/**
- *   File Name: ConData.java<br>
- *
- *   Nepton, Jean-francois<br>
- *   Java Boot Camp Exercise<br>
- *   Instructor: Jean-francois Nepton<br>
- *   Created: Apr 23, 2016
- *
- */
 
-package com.sqa.jf.util.helper;
+package com.sqa.ay;
 
 import java.sql.*;
 import java.util.*;
 
-/**
- * ConData //ADDD (description of class)
- * <p>
- * //ADDD (description of core fields)
- * <p>
- * //ADDD (description of core methods)
- *
- * @author Nepton, Jean-francois
- * @version 1.0.0
- * @since 1.0
- *
- */
 public class DataHelper {
 
 	public static Object[][] evalDatabaseTable(String driverClassString, String databaseStringUrl, String username,
