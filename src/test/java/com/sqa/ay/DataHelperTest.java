@@ -8,7 +8,7 @@ public class DataHelperTest {
 	@DataProvider(name = "textData")
 	public Object[][] getData() {
 		Object[][] data;
-		data = DataHelperAnand.getTextFileData("src/main/resources/", "data.csv", TextFormat.CSV, true);
+		data = DataHelper.getTextFileData("src/main/resources/", "data.csv", TextFormat.CSV, true);
 		DisplayHelper.multArray(data);
 		return data;
 	}
@@ -16,7 +16,7 @@ public class DataHelperTest {
 	@DataProvider(name = "textDataTyped")
 	public Object[][] getDataTyped() {
 		Object[][] data;
-		data = DataHelperAnand.getTextFileData("src/main/resources/", "data.csv", TextFormat.CSV, true, Integer.TYPE,
+		data = DataHelper.getTextFileData("src/main/resources/", "data.csv", TextFormat.CSV, true, Integer.TYPE,
 				Boolean.TYPE);
 		DisplayHelper.multArray(data);
 		return data;
@@ -25,7 +25,7 @@ public class DataHelperTest {
 	@DataProvider(name = "textDataTypedWithString")
 	public Object[][] getDataTypedWithString() {
 		Object[][] data;
-		data = DataHelperAnand.getTextFileData("src/main/resources/", "data2.csv", TextFormat.CSV, true, String.class,
+		data = DataHelper.getTextFileData("src/main/resources/", "data2.csv", TextFormat.CSV, true, String.class,
 				Integer.TYPE, Boolean.TYPE);
 		DisplayHelper.multArray(data);
 		return data;
