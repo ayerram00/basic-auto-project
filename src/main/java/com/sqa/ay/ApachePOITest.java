@@ -6,17 +6,17 @@ import java.util.*;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.*;
 import org.testng.*;
-import org.testng.annotations.*;
 import org.testng.annotations.Test;
 
 public class ApachePOITest {
-	@DataProvider
-	public Object[][] getData() {
-		Object[][] data = DataHelper.getExcelFileData("src/main/resources/", "calc-area-dp.xlsx", true);
-		DisplayHelper.multArray(data);
-		return data;
-
-	}
+	// @DataProvider
+	// public Object[][] getData() {
+	// Object[][] data = DataHelper.getExcelFileData("src/main/resources/",
+	// "calc-area-dp.xlsx", true);
+	// DisplayHelper.multArray(data);
+	// return data;
+	//
+	// }
 
 	@Test(enabled = false)
 	public void test() {

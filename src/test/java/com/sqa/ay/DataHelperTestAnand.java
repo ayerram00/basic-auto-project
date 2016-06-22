@@ -4,11 +4,11 @@ import org.testng.*;
 import org.testng.annotations.*;
 import org.testng.annotations.Test;
 
-public class DataHelperTest {
+public class DataHelperTestAnand {
 	@DataProvider(name = "textData")
 	public Object[][] getData() {
 		Object[][] data;
-		data = DataHelper.getTextFileData("src/main/resources/", "data.csv", TextFormat.CSV, true);
+		data = DataHelperAnand.getTextFileData("src/main/resources/", "data.csv", TextFormat.CSV, true);
 		DisplayHelper.multArray(data);
 		return data;
 	}
@@ -16,7 +16,7 @@ public class DataHelperTest {
 	@DataProvider(name = "textDataTyped")
 	public Object[][] getDataTyped() {
 		Object[][] data;
-		data = DataHelper.getTextFileData("src/main/resources/", "data.csv", TextFormat.CSV, true, Integer.TYPE,
+		data = DataHelperAnand.getTextFileData("src/main/resources/", "data.csv", TextFormat.CSV, true, Integer.TYPE,
 				Boolean.TYPE);
 		DisplayHelper.multArray(data);
 		return data;
@@ -25,7 +25,7 @@ public class DataHelperTest {
 	@DataProvider(name = "textDataTypedWithString")
 	public Object[][] getDataTypedWithString() {
 		Object[][] data;
-		data = DataHelper.getTextFileData("src/main/resources/", "data2.csv", TextFormat.CSV, true, String.class,
+		data = DataHelperAnand.getTextFileData("src/main/resources/", "data2.csv", TextFormat.CSV, true, String.class,
 				Integer.TYPE, Boolean.TYPE);
 		DisplayHelper.multArray(data);
 		return data;
